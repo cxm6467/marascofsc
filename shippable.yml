@@ -1,0 +1,6 @@
+env:
+	global:
+	- secure: QnhgTFicQUvknFR3wxA108obVo5UswQ5NviMuFp2oK4JEpLlrEltzj4AAvRD9avDXCCyIh/qDHlDu6O9Dx7MB2pGxrqlnErYnReB/i6qPSN8HkgZwUQOEhRMFe1KbcV6WUTFuYFB0AOcqhkkR3RBPZKEN15bnKbVYkkXIPZqX5uFxVJuEIjeR9ps9f5pEAnuCTk6SqJW4Zut7qun6Wlx1Q5ZL9gPNpRDicJ5lXnr134pTd2TJONm6DNz0wkTB5PXsc1VGOZP4+xYcHtP2goI9RhO8rGwvIn+K0jg4JBxUi0obXUIGHs9mPo2KXVpl4X8VyHgKVJVq7Q1XzG+u4JxRA==
+build:
+	on_success:
+	-aws s3 sync $SHIPPABLE_BUILD_DIR "marascofsc.com.s3-website.us-east-2.amazonaws.com" -- region "us-east-2"
