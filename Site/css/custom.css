@@ -3,5 +3,8 @@ body, html {
     display: grid;
   }
   #under-construction {
-    margin: auto;
+    margin-bottom: auto;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top:0;
   }
