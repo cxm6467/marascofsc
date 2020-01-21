@@ -4,8 +4,5 @@ body, html {
   }
 
   #coming-soon {
-    margin-bottom: auto;
-    margin-left: 0;
-    margin-right: 0;
-    margin-top:0;
+    margin: auto;
   }
