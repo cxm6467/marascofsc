@@ -8,100 +8,195 @@
   <meta name="description" content="Marasco FSC">
   <meta name="author" content="Christopher Marasco">
 
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/main.css">
 
 </head>
 
 <body>
-  <div id="content">
-    <section id="banner">
-      <img src="media/banner.png" alt="Banner"/>
-    </section>
-    <section id="bio"> 
-      <img src="media/mugshot.jpg" alt="Jim's Photo"/>
-      <h1>About</h1>
+  <div id="content"> 
+    <header>
+
+
+      <img alt="Banner" class="d-none d-md-block" src="media/img/banner.png" style="width: 100%;">
+      <img alt="Logo" class="d-sm-none" src="media/img/logo.png" style="width: 100%;">
+    </header>
+
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4">COVID-19 Update</h1>
+        <p>
+          First and foremost, I hope you are all taking care of yourselves and your families during this uncertain time. As you know, the COVID-19 situation is changing quickly. 
+        </p>
+        <p>
+          I know this is an unsettling time for many of your co-workers and friends around the world. It’s natural to be anxious in a situation like this, especially for those of us who travel a lot for work. But we must base our decisions on sound science, not fear. We are taking reasonable and evidence-based measures to minimize risks to our employees, contractors, and clients.
+        </p>
+        <p>
+          I’d like to provide you with alternatives to on site consulting and training. I want to offer virtual training and/or consulting. This way no one is put at risk.
+        </p>
+        <p>
+          Sites can use their own virtual systems such as Blue Jeans, Skype, GoToMeeting, Zoom or other means. Sessions can be flexible to meet your ever changing production schedule and availability of employees.
+        </p>
+        <p>
+          I offer consultation for BRC and SQF. I can help develop already existing procedures, forms or guidance on developing new procedures etc. to meet the scheme requirements. I have currently been doing internal audits of existing food safety systems to meet BRC and SQF requirements. In addition, I can train your food safety team in HACCP. And also, in PCQI for Human Foods. For this I suggest the option of doing the offsite webinar training then a virtual one day part 2 training.
+        </p>
+        <p>
+          Fees for the consulting and training can be discussed at the time a class or consultation is confirmed.
+        </p>
+        <hr>
+        <p>
+          The BRC has put out several good guidance materials to help your facility safely protect your employees and provide confidence to your customers that you are doing your due diligence to ensure that there is no risk of finished products produced at your plant.
+        </p>
+        <ul>
+          <li><a href="https://www.brcgs.com/about/news/2020/hygiene-management-of-shared-vehicles/">Hygiene management of shared vehicles</a></li>
+          <li><a href="https://www.brcgs.com/about/news/2020/guidance-on-the-use-of-ppe-such-as-face-masks/">Guidance on the use of PPE such as face masks</a></li>
+          <li><a href="https://www.brcgs.com/about/news/2020/the-value-of-internal-audits-during-covid-19/">The Value of internal audits during COVID 19</a></li>
+          <li><a href="https://www.brcgs.com/about/news/2020/supplier-approval-emergency-supply-procedures/">Supplier approval emergency supply procedures</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <section id="bio">
+      <img id="mugshot" src="media/img/mugshot.jpg" alt="mugshot"/>
+      <h2>About</h2>
       <p>
         Jim has over 30 years of quality, GMP, HACCP and GFSI food safety food industry experience. His career includes occupations as an Assistant Plant Manager, Quality Manager, GFSI food safety auditor, Quality program development and trainer for numerous facility employees and management. Most recently Jim was the BRC Certification Manager for AIB International where he managed the audits, BRC audit technical reviews, auditor competency, and staffing. Jim's food sector experience includes bakeries, dry ingredients, Packaging (food contact and non contact), beverages (alcoholic and non alcoholic), confections, dairy and flavors.
       </p>
     </section>
-    <secion id="services">
-      <h1>Services</h1>
+
+    <section id="services">
+      <h2>Services</h2>
       <ul>
-        <li>BRC Food Safety version 7 (including; Third Party Auditor Training, Conversion training
-          6-7) for auditors and manufacturers</li>
-          <li>BRC Packaging Issue 5 training for auditors and manufacturers</li>
-          <li>Gap assessments for BRC food and packaging</li>
-          <li>Pre assessments for BRC, SQF and FSSC</li>
-          <li>Program development for BRC Food and Packaging</li>
-          <li>GMP program development</li>
-          <li>HACCP program development</li>
-          <li>Quality Program development</li>
-          <br>
-          <img src="/media/consultant.png" alt="consultant"/>
+        <li>Gap assessments for BRC and SQF food and packaging</li>
+        <li>Pre assessments for BRC, SQF and FSSC</li>
+        <li>Program development for BRC Food and Packaging</li>
+        <li>GMP program development</li>
+        <li>HACCP program development</li>
+        <li>Quality Program development</li>
+        <br>
       </ul>
-    </secion>
+    </section>
+
     <section id="courses">
-      <h1>Courses</h1>
+      <h2>Courses</h2>
       <h3>Off-Site Courses</h3>
-      <div>Course List</div>
+      <div class="accordion" id="off-site">
+        <div class="card">
+          <div class="card-header" id="h1-9">
+            <h2 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#c1-9" aria-expanded="false" aria-controls="c1-9">
+                Internal Auditor
+              </button>
+            </h2>
+          </div>
+          <div id="c1-9" class="collapse" aria-labelledby="h1-9" data-parent="#off-site">
+            <div class="card-body">
+
+              <h4>Course outline:</h4>This two-day course will enable you to undertake internal
+              audits and prepare companies for third party audits. It's delivered via a series of
+              workshop-led discussions, presentations and an interactive case study. During the live
+              case study, you will be given feedback and support to enable you to carry out an audit
+              at your own workplace. You will be assessed throughout the course (50%) and you will
+              also need to undertake a work place audit and submit an audit report for assessment
+              (50%). You will need to gain a 75% pass for this assessment.
+              <h5>The course is aimed at:</h5>
+              <ul>
+                <li>Quality and technical managers</li>
+                <li>Operations managers</li>
+                <li>Staff responsible for managing an internal auditing schedule</li>
+                <li>Staff responsible for undertaking internal audits as required by BRC Global
+                Standards</li>
+              </ul>
+              <h5>At the end of the course you will:</h5>
+              <ul>
+                <li>Understand the roles and responsibilities of auditors</li>
+                <li>Be able to plan and conduct an internal audit</li>
+                <li>Know how to write concise, accurate and factual audit reports</li>
+                <li>Be able to undertake audit follow-up activities</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="h1-10">
+            <h2 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#c1-10" aria-expanded="false" aria-controls="c1-10">
+                Preventive Controls for Human Food Training Course
+              </button>
+            </h2>
+          </div>
+          <div id="c1-10" class="collapse" aria-labelledby="h1-10" data-parent="#off-site">
+            <div class="card-body">
+              <h4>Course outline:</h4>
+              														<p>FSMA has been signed into law. Its focus is on the prevention of food illness. Food companies will be required to have a food safety plan in place that meets the FSMA requirements. The plan needs to be developed by a Preventive Controls Qualified Individual (PCQI).</p>
+                                          <p>The Current Good Manufacturing Practice, Hazard Analysis, and Risk-based Preventive Controls for Human Food regulation (referred to as the Preventive Controls for Human Food regulation) is intended to ensure safe manufacturing/processing, packing and holding of food products for human consumption in the United States.</p>
+                                          <p>This course, developed by FSPCA, is the “standardized curriculum” recognized by FDA; successfully completing this course is one way to meet the requirements for a PCQI.</p> 
+                                          <p>To becoming qualified as a PCQI you need to take the standardized training course taught by a "Preventive Controls Lead Instructor". This is an instructor that has applied to FSPCA, been accepted and completed the Lead Instructor training course.</p>
+                                          <p>I am a Lead Instructor for the FSPCA Preventive Controls for Human Food Course authorized to teach this standardized course, and will be offering the 2.5 day Preventive Controls for Human Food Course.</p>
+                                          <p>Please contact me if you would like to set up a private or public course.</p>
+                                          If you're interested in taking this class please follow the instructions in this <a href="media/doc/BlendedLearningOption.docx">document</a>.
+                                          <p><img src="media/img/fspca.jpg" alt="FSCPCA logo"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h3>On-Site Courses and Training</h3>
       <h4>Training at Your Location</h4><b>Delivered in a controlled environment:</b>
-      <p>Having training delivered conveniently to your work-site maintains the
-      confidentiality of your systems and processes and enables the learning to be relevant to
-      your workplace context. This strategy is particularly beneficial if you are seeking to
-      review and improve on your operation and management systems. Training employees on-site
-      enhances their learning capability by focusing on developing skills that are relevant to
-      their work role. On-site delivery supports better transfer of knowledge and skills to
-      the workplace.</p><b>Build on team dynamics:</b>
-      <p>By drawing on the experiences of team members and engaging in structured professional
-      conversations, your employees become more receptive towards change and embracing new
-      initiatives. Reduced expenses: Save on travel and accommodation expenses and minimize
-      the downtime involved with training employees off-site.</p><b>Greater information
-      retention:</b>
-      <p>One of the most fundamental methodologies in effective adult learning is team
-      interaction. Review of learning through interactive discussions between participants
-      after the completion of formal training is encouraged by our facilitators to enhance
-      learning outcomes.</p><b>Request for Onsite Training Quote Onsite training at your
-      company's location is an excellent option for 5 or more attendees:</b>
-      <p></p>
-      <ul>
-        <li>Training focused on your company's processes and products</li>
-        <li>eliminate employee travel costs and lost time - our trainers come to your site</li>
-        <li>increase teamwork and ensure consistency of training within your group</li>
-      </ul>
+											<p>Having training delivered conveniently to your work-site maintains the
+											confidentiality of your systems and processes and enables the learning to be relevant to
+											your workplace context. This strategy is particularly beneficial if you are seeking to
+											review and improve on your operation and management systems. Training employees on-site
+											enhances their learning capability by focusing on developing skills that are relevant to
+											their work role. On-site delivery supports better transfer of knowledge and skills to
+											the workplace.</p><b>Build on team dynamics:</b>
+											<p>By drawing on the experiences of team members and engaging in structured professional
+											conversations, your employees become more receptive towards change and embracing new
+											initiatives. Reduced expenses: Save on travel and accommodation expenses and minimize
+											the downtime involved with training employees off-site.</p><b>Greater information
+											retention:</b>
+											<p>One of the most fundamental methodologies in effective adult learning is team
+											interaction. Review of learning through interactive discussions between participants
+											after the completion of formal training is encouraged by our facilitators to enhance
+											learning outcomes.</p><b>Request for Onsite Training Quote Onsite training at your
+											company's location is an excellent option for 5 or more attendees:</b>
+											<p></p>
+											<ul>
+												<li>Training focused on your company's processes and products</li>
+												<li>eliminate employee travel costs and lost time - our trainers come to your site</li>
+												<li>increase teamwork and ensure consistency of training within your group</li>
     </section>
+
     <section id="refund_policy">
-      <h1>Refund Policy</h1>
-					<p>Marasco Food Safety Consultant LLC realizes that it may be necessary for registrants to
-					cancel or postpone training under certain circumstances. 30 days or longer before the start of
-					the course, you may cancel and receive a full refund, or transfer to another session. In
-					fairness to our other course attendees, please note the following Cancellation and Transfer
-					Policy.</p>
-					<ul>
-						<li>Course fees are in USD or CAD based upon location of class.</li>
-						<li>Webinar Course fees are non-refundable.</li>
-						<li>Cancellations made within 30 days of the course will be payable at 50% of the tuition
-						fee.**</li>
-						<li>Cancellations made within 14 days of the course are non-refundable.**</li>
-						<li>Registrants who fail to attend their course are liable for 100% of the course fee.**</li>
-						<li>Transfers will not be allowed within 14 days of the course begin date.</li>
-					</ul>** If course payment has not been received by at the time of cancellation/transfer and a
-					fee is due, an invoice payable by the attendee will be mailed for this fee. In the rare event
-					that we must cancel a course, Marasco Food Safety Consultant LLC liability is limited to the
-					course fee.
-					<p></p>
+      <h2>Refund Policy</h2>
+      <p>Marasco Food Safety Consultant LLC realizes that it may be necessary for registrants to
+        cancel or postpone training under certain circumstances. 30 days or longer before the start of
+        the course, you may cancel and receive a full refund, or transfer to another session. In
+        fairness to our other course attendees, please note the following Cancellation and Transfer
+        Policy.</p>
+        <ul>
+          <li>Course fees are in USD or CAD based upon location of class.</li>
+          <li>Webinar Course fees are non-refundable.</li>
+          <li>Cancellations made within 30 days of the course will be payable at 50% of the tuition
+          fee.**</li>
+          <li>Cancellations made within 14 days of the course are non-refundable.**</li>
+          <li>Registrants who fail to attend their course are liable for 100% of the course fee.**</li>
+          <li>Transfers will not be allowed within 14 days of the course begin date.</li>
+        </ul>
     </section>
+
+    <section id="contact">
+      <h2>Contact Me</h2>
+      <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+      <div class="LI-profile-badge"  data-version="v1" data-size="medium" data-locale="en_US" data-type="horizontal" data-theme="dark" data-vanity="jim-marasco-7b21a639"><a class="LI-simple-link" href='https://www.linkedin.com/in/jim-marasco-7b21a639?trk=profile-badge'>Jim Marasco</a></div>
+    </section>
+    <footer>
+      <p class="pull-left">&copy; MarascoFSC 2020 Powered by <a href="http://christophermarasco.com">Chris</a></p>
+    </footer>
   </div>
-  <footer>
-		<hr>
-		<div class="container">
-			<p class="text-right">Copyright &copy; Marasco Food Safety Consultant, LLC 2015-20</p>
-		</div>
-	</footer>
 
-  <!-- Scripts (JS, Duh) -->    
-  <script src="js/jquery-3.4.1.min.js"></script>
-  <script src="js/custom.js"></script>
-
+  <!-- Scripts -->    
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>

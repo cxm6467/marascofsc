@@ -1,0 +1,33 @@
+body,html{
+    width:100%;
+    height:100%;
+}
+
+body{
+    background-image: url(../media/img/bg.png) repeat;
+}
+
+#content{
+    max-width:  1540px;
+	margin-left:auto;
+    margin-right: auto;
+    -webkit-box-shadow: 0px 0px 38px -14px rgba(0,0,0,1);
+    -moz-box-shadow: 0px 0px 38px -14px rgba(0,0,0,1);
+    box-shadow: 0px 0px 38px -14px rgba(0,0,0,1);
+    padding-left:20px;
+    padding-right:20px;
+}
+section{
+    padding: 10px;
+}
+section:nth-of-type(2n){
+    background:#c4bfbe;
+}
+
+section:nth-of-type(2n-1){
+    background: #bec3c4;
+}
+
+footer{
+    border-top:black solid 2px;
+}
