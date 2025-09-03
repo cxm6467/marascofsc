@@ -313,6 +313,14 @@ section li {
   height: auto;
 }
 
+/* FSPCA logo styling */
+img[alt*="FSPCA"], img[alt*="FSCPCA"] {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1rem auto;
+}
+
 /* Enhanced focus styles for all interactive elements */
 a:focus,
 button:focus,
@@ -638,6 +646,12 @@ footer a:hover {
   .contact-info {
     padding: 1.25rem;
   }
+  
+  /* FSPCA image mobile fix */
+  img[alt*="FSPCA"], img[alt*="FSCPCA"] {
+    max-width: 200px;
+    margin: 0.75rem auto;
+  }
 }
 
 @media (max-width: 400px) {
@@ -656,5 +670,11 @@ footer a:hover {
   .accordion .btn-link {
     padding: 0.75rem;
     font-size: 0.9rem;
+  }
+  
+  /* FSPCA image very small screens */
+  img[alt*="FSPCA"], img[alt*="FSCPCA"] {
+    max-width: 160px;
+    margin: 0.5rem auto;
   }
 }
