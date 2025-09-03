@@ -24,7 +24,7 @@ jobs:
       with:
         role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
         role-session-name: GitHubActions-Infrastructure
-        aws-region: us-east-2
+        aws-region: us-east-1
         
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v3
@@ -70,7 +70,7 @@ jobs:
       with:
         role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
         role-session-name: GitHubActions-Deploy
-        aws-region: us-east-2
+        aws-region: us-east-1
         
     - name: Sync to S3 with optimal caching
       run: |
