@@ -81,15 +81,17 @@ jobs:
           --cache-control "public, max-age=300" \
           --delete
           
-        # Sync CSS with longer cache (upload directory to matching prefix)
+        # Clean and sync CSS with longer cache (ensures correct Content-Type)
         if [ -d "css" ]; then
+          aws s3 rm s3://marascofsc-website-2025/css --recursive || true
           aws s3 sync css s3://marascofsc-website-2025/css \
             --cache-control "public, max-age=31536000" \
             --delete
         fi
 
-        # Sync JS with longer cache (upload directory to matching prefix)
+        # Clean and sync JS with longer cache (ensures correct Content-Type)
         if [ -d "js" ]; then
+          aws s3 rm s3://marascofsc-website-2025/js --recursive || true
           aws s3 sync js s3://marascofsc-website-2025/js \
             --cache-control "public, max-age=31536000" \
             --delete
