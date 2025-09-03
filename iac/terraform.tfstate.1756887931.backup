@@ -1,7 +1,7 @@
 {
   "version": 4,
   "terraform_version": "1.13.0",
-  "serial": 34,
+  "serial": 31,
   "lineage": "787b7f08-5a35-2f3a-3974-ffe16894bbbf",
   "outputs": {
     "certificate_arn": {
@@ -378,7 +378,8 @@
             "aws_acm_certificate.ssl_certificate",
             "aws_acm_certificate_validation.ssl_certificate",
             "aws_cloudfront_origin_access_control.oac",
-            "aws_route53_record.cert_validation"
+            "aws_route53_record.cert_validation",
+            "aws_s3_bucket.website"
           ]
         }
       ]
@@ -524,7 +525,8 @@
             "aws_acm_certificate_validation.ssl_certificate",
             "aws_cloudfront_distribution.website",
             "aws_cloudfront_origin_access_control.oac",
-            "aws_route53_record.cert_validation"
+            "aws_route53_record.cert_validation",
+            "aws_s3_bucket.website"
           ]
         }
       ]
@@ -572,8 +574,88 @@
             "aws_acm_certificate_validation.ssl_certificate",
             "aws_cloudfront_distribution.website",
             "aws_cloudfront_origin_access_control.oac",
-            "aws_route53_record.cert_validation"
+            "aws_route53_record.cert_validation",
+            "aws_s3_bucket.website"
           ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_s3_bucket",
+      "name": "website",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "acceleration_status": "",
+            "acl": null,
+            "arn": "arn:aws:s3:::marascofsc-website-2025",
+            "bucket": "marascofsc-website-2025",
+            "bucket_domain_name": "marascofsc-website-2025.s3.amazonaws.com",
+            "bucket_prefix": "",
+            "bucket_regional_domain_name": "marascofsc-website-2025.s3.us-east-1.amazonaws.com",
+            "cors_rule": [],
+            "force_destroy": false,
+            "grant": [
+              {
+                "id": "21190aa2b53c204157d2b0788d9e906d23989245f4677c561a6c68cb36757af4",
+                "permissions": [
+                  "FULL_CONTROL"
+                ],
+                "type": "CanonicalUser",
+                "uri": ""
+              }
+            ],
+            "hosted_zone_id": "Z3AQBSTGFYJSTF",
+            "id": "marascofsc-website-2025",
+            "lifecycle_rule": [],
+            "logging": [],
+            "object_lock_configuration": [],
+            "object_lock_enabled": false,
+            "policy": "{\"Statement\":[{\"Action\":\"s3:GetObject\",\"Condition\":{\"StringEquals\":{\"AWS:SourceArn\":\"arn:aws:cloudfront::276362266002:distribution/E11MUMDEVSMFZ2\"}},\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"cloudfront.amazonaws.com\"},\"Resource\":\"arn:aws:s3:::marascofsc-website-2025/*\",\"Sid\":\"AllowCloudFrontServicePrincipal\"}],\"Version\":\"2008-10-17\"}",
+            "region": "us-east-1",
+            "replication_configuration": [],
+            "request_payer": "BucketOwner",
+            "server_side_encryption_configuration": [
+              {
+                "rule": [
+                  {
+                    "apply_server_side_encryption_by_default": [
+                      {
+                        "kms_master_key_id": "",
+                        "sse_algorithm": "AES256"
+                      }
+                    ],
+                    "bucket_key_enabled": false
+                  }
+                ]
+              }
+            ],
+            "tags": {
+              "Name": "marascofsc.com-website"
+            },
+            "tags_all": {
+              "Environment": "production",
+              "ManagedBy": "Terraform",
+              "Name": "marascofsc.com-website",
+              "Project": "MarascoFSC"
+            },
+            "timeouts": null,
+            "versioning": [
+              {
+                "enabled": true,
+                "mfa_delete": false
+              }
+            ],
+            "website": [],
+            "website_domain": null,
+            "website_endpoint": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjM2MDAwMDAwMDAwMDAsInJlYWQiOjEyMDAwMDAwMDAwMDAsInVwZGF0ZSI6MTIwMDAwMDAwMDAwMH19"
         }
       ]
     },
@@ -598,7 +680,63 @@
             "aws_acm_certificate_validation.ssl_certificate",
             "aws_cloudfront_distribution.website",
             "aws_cloudfront_origin_access_control.oac",
-            "aws_route53_record.cert_validation"
+            "aws_route53_record.cert_validation",
+            "aws_s3_bucket.website",
+            "aws_s3_bucket_public_access_block.website"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_s3_bucket_public_access_block",
+      "name": "website",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "block_public_acls": true,
+            "block_public_policy": true,
+            "bucket": "marascofsc-website-2025",
+            "id": "marascofsc-website-2025",
+            "ignore_public_acls": true,
+            "restrict_public_buckets": true
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_s3_bucket.website"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_s3_bucket_versioning",
+      "name": "website",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "bucket": "marascofsc-website-2025",
+            "expected_bucket_owner": "",
+            "id": "marascofsc-website-2025",
+            "mfa": null,
+            "versioning_configuration": [
+              {
+                "mfa_delete": "",
+                "status": "Enabled"
+              }
+            ]
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_s3_bucket.website"
           ]
         }
       ]
