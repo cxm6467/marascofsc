@@ -8,12 +8,12 @@ terraform {
     }
   }
   
-  backend "s3" {
-    bucket = "marascofsc.com"
-    key    = "terraform/terraform.tfstate"
-    region = "us-east-1"
-    encrypt = true
-  }
+  # backend "s3" {
+  #   bucket = "marascofsc.com"
+  #   key    = "terraform/terraform.tfstate"
+  #   region = "us-east-1"
+  #   encrypt = true
+  # }
 }
 
 provider "aws" {
