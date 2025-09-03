@@ -32,16 +32,10 @@ jobs:
         terraform_version: "1.6.0"
         terraform_wrapper: false
 
-    - name: Create S3 bucket and setup for Terraform state
+    - name: Setup Terraform state storage
       run: |
-        # Create S3 bucket if it doesn't exist
-        if ! aws s3 ls "s3://marascofsc.com" >/dev/null 2>&1; then
-          echo "Creating S3 bucket..."
-          aws s3 mb s3://marascofsc.com --region us-east-2
-        fi
-        
-        # Ensure S3 bucket has versioning enabled for state storage
-        aws s3api put-bucket-versioning --bucket "marascofsc.com" --versioning-configuration Status=Enabled
+        # Check if bucket exists for state storage, if not Terraform will create it
+        echo "Terraform will manage S3 bucket creation and configuration"
 
     - name: Terraform Init
       working-directory: ./iac

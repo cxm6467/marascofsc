@@ -17,3 +17,8 @@ output "website_url" {
   description = "Website URL"
   value       = "https://${var.domain_name}"
 }
+
+output "s3_bucket_name" {
+  description = "S3 bucket name"
+  value       = aws_s3_bucket.website.bucket
+}
