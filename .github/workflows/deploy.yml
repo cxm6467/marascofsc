@@ -1,0 +1,73 @@
+name: Deploy to S3
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+        role-session-name: GitHubActions-Deploy
+        aws-region: us-east-1
+        
+    - name: Sync to S3 with optimal caching
+      run: |
+        # Sync HTML files with short cache
+        aws s3 sync . s3://marascofsc.com \
+          --exclude "*" \
+          --include "*.html" \
+          --cache-control "public, max-age=300" \
+          --delete
+          
+        # Sync CSS/JS with longer cache
+        aws s3 sync . s3://marascofsc.com \
+          --exclude "*" \
+          --include "*.css" \
+          --include "*.js" \
+          --cache-control "public, max-age=31536000" \
+          --delete
+          
+        # Sync images with long cache
+        aws s3 sync . s3://marascofsc.com \
+          --exclude "*" \
+          --include "media/*" \
+          --cache-control "public, max-age=31536000" \
+          --delete
+          
+        # Sync remaining files
+        aws s3 sync . s3://marascofsc.com \
+          --exclude ".git/*" \
+          --exclude ".github/*" \
+          --exclude "*.md" \
+          --exclude ".gitignore" \
+          --exclude "*.html" \
+          --exclude "*.css" \
+          --exclude "*.js" \
+          --exclude "media/*" \
+          --delete
+          
+    - name: Invalidate CloudFront (if applicable)
+      run: |
+        # Get CloudFront distribution ID for the domain
+        DIST_ID=$(aws cloudfront list-distributions --query "DistributionList.Items[?Aliases.Items[?contains(@,'marascofsc.com')]].Id" --output text)
+        if [ ! -z "$DIST_ID" ] && [ "$DIST_ID" != "None" ]; then
+          echo "Invalidating CloudFront distribution: $DIST_ID"
+          aws cloudfront create-invalidation --distribution-id $DIST_ID --paths "/*"
+        else
+          echo "No CloudFront distribution found for marascofsc.com"
+        fi
+      continue-on-error: true
