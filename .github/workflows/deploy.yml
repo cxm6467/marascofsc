@@ -81,31 +81,37 @@ jobs:
           --cache-control "public, max-age=300" \
           --delete
           
-        # Sync CSS/JS with longer cache
-        aws s3 sync . s3://marascofsc-website-2025 \
-          --exclude "*" \
-          --include "*.css" \
-          --include "*.js" \
-          --cache-control "public, max-age=31536000" \
-          --delete
+        # Sync CSS with longer cache (upload directory to matching prefix)
+        if [ -d "css" ]; then
+          aws s3 sync css s3://marascofsc-website-2025/css \
+            --cache-control "public, max-age=31536000" \
+            --delete
+        fi
+
+        # Sync JS with longer cache (upload directory to matching prefix)
+        if [ -d "js" ]; then
+          aws s3 sync js s3://marascofsc-website-2025/js \
+            --cache-control "public, max-age=31536000" \
+            --delete
+        fi
           
-        # Sync images with long cache
-        aws s3 sync . s3://marascofsc-website-2025 \
-          --exclude "*" \
-          --include "media/*" \
-          --cache-control "public, max-age=31536000" \
-          --delete
+        # Sync images with long cache (upload directory to matching prefix)
+        if [ -d "media" ]; then
+          aws s3 sync media s3://marascofsc-website-2025/media \
+            --cache-control "public, max-age=31536000" \
+            --delete
+        fi
           
-        # Sync remaining files
+        # Sync remaining files at repo root (excluding managed folders)
         aws s3 sync . s3://marascofsc-website-2025 \
           --exclude ".git/*" \
           --exclude ".github/*" \
+          --exclude "css/*" \
+          --exclude "js/*" \
+          --exclude "media/*" \
           --exclude "*.md" \
           --exclude ".gitignore" \
           --exclude "*.html" \
-          --exclude "*.css" \
-          --exclude "*.js" \
-          --exclude "media/*" \
           --delete
           
     - name: Invalidate CloudFront cache
