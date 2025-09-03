@@ -74,16 +74,19 @@ jobs:
         
     - name: Sync to S3 with optimal caching
       run: |
-        # Sync HTML files with short cache
-        aws s3 sync . s3://marascofsc-website-2025 \
-          --exclude "*" \
-          --include "*.html" \
+        # Clean the entire bucket first (remove all files)
+        echo "Cleaning S3 bucket..."
+        aws s3 rm s3://marascofsc-website-2025 --recursive || true
+        
+        # Upload HTML files with short cache
+        echo "Uploading HTML files..."
+        aws s3 cp index.html s3://marascofsc-website-2025/index.html \
           --cache-control "public, max-age=300" \
-          --delete
-          
-        # Clean and sync CSS with longer cache (ensures correct Content-Type)
+          --content-type "text/html"
+        
+        # Upload CSS files with correct content type and long cache
+        echo "Uploading CSS files..."
         if [ -d "css" ]; then
-          aws s3 rm s3://marascofsc-website-2025/css --recursive || true
           for file in css/*.css; do
             if [ -f "$file" ]; then
               aws s3 cp "$file" "s3://marascofsc-website-2025/$file" \
@@ -92,10 +95,10 @@ jobs:
             fi
           done
         fi
-
-        # Clean and sync JS with longer cache (ensures correct Content-Type)
+        
+        # Upload JS files with correct content type and long cache
+        echo "Uploading JS files..."
         if [ -d "js" ]; then
-          aws s3 rm s3://marascofsc-website-2025/js --recursive || true
           for file in js/*.js; do
             if [ -f "$file" ]; then
               aws s3 cp "$file" "s3://marascofsc-website-2025/$file" \
@@ -104,25 +107,17 @@ jobs:
             fi
           done
         fi
-          
-        # Sync images with long cache (upload directory to matching prefix)
+        
+        # Upload media files with long cache
+        echo "Uploading media files..."
         if [ -d "media" ]; then
           aws s3 sync media s3://marascofsc-website-2025/media \
-            --cache-control "public, max-age=31536000" \
-            --delete
+            --cache-control "public, max-age=31536000"
         fi
-          
-        # Sync remaining files at repo root (excluding managed folders)
-        aws s3 sync . s3://marascofsc-website-2025 \
-          --exclude ".git/*" \
-          --exclude ".github/*" \
-          --exclude "css/*" \
-          --exclude "js/*" \
-          --exclude "media/*" \
-          --exclude "*.md" \
-          --exclude ".gitignore" \
-          --exclude "*.html" \
-          --delete
+        
+        # List uploaded files for verification
+        echo "Verifying uploaded files..."
+        aws s3 ls s3://marascofsc-website-2025 --recursive
           
     - name: Invalidate CloudFront cache
       run: |
