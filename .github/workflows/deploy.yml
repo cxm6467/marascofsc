@@ -24,7 +24,7 @@ jobs:
       with:
         role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
         role-session-name: GitHubActions-Infrastructure
-        aws-region: us-east-1
+        aws-region: us-east-2
         
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v3
@@ -32,23 +32,16 @@ jobs:
         terraform_version: "1.6.0"
         terraform_wrapper: false
 
-    - name: Setup Terraform state storage (if needed)
+    - name: Create S3 bucket and setup for Terraform state
       run: |
-        TABLE_NAME="terraform-state-lock"
+        # Create S3 bucket if it doesn't exist
+        if ! aws s3 ls "s3://marascofsc.com" >/dev/null 2>&1; then
+          echo "Creating S3 bucket..."
+          aws s3 mb s3://marascofsc.com --region us-east-2
+        fi
         
         # Ensure S3 bucket has versioning enabled for state storage
-        aws s3api put-bucket-versioning --bucket "marascofsc.com" --versioning-configuration Status=Enabled || true
-        
-        # Create DynamoDB table for state locking if it doesn't exist
-        if ! aws dynamodb describe-table --table-name "$TABLE_NAME" >/dev/null 2>&1; then
-          echo "Creating Terraform state lock table..."
-          aws dynamodb create-table \
-            --table-name "$TABLE_NAME" \
-            --attribute-definitions AttributeName=LockID,AttributeType=S \
-            --key-schema AttributeName=LockID,KeyType=HASH \
-            --provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5 \
-            --tags Key=Project,Value=MarascoFSC Key=Purpose,Value=TerraformStateLock
-        fi
+        aws s3api put-bucket-versioning --bucket "marascofsc.com" --versioning-configuration Status=Enabled
 
     - name: Terraform Init
       working-directory: ./iac
@@ -83,7 +76,7 @@ jobs:
       with:
         role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
         role-session-name: GitHubActions-Deploy
-        aws-region: us-east-1
+        aws-region: us-east-2
         
     - name: Sync to S3 with optimal caching
       run: |

@@ -1,5 +1,7 @@
-# SSL Certificate
+# SSL Certificate (must be in us-east-1 for CloudFront)
 resource "aws_acm_certificate" "ssl_certificate" {
+  provider = aws.us_east_1
+  
   domain_name               = var.domain_name
   subject_alternative_names = ["www.${var.domain_name}"]
   validation_method         = "DNS"
@@ -15,6 +17,8 @@ resource "aws_acm_certificate" "ssl_certificate" {
 
 # Certificate validation
 resource "aws_acm_certificate_validation" "ssl_certificate" {
+  provider = aws.us_east_1
+  
   certificate_arn         = aws_acm_certificate.ssl_certificate.arn
   validation_record_fqdns = [for record in aws_route53_record.cert_validation : record.fqdn]
 
