@@ -46,9 +46,6 @@ resource "aws_cloudfront_distribution" "website" {
     compress                 = true
     viewer_protocol_policy   = "redirect-to-https"
     cache_policy_id          = "2e54312d-136d-493c-8eb9-b001f22f67d2" # CachingOptimized
-    min_ttl                  = 31536000
-    default_ttl              = 31536000
-    max_ttl                  = 31536000
   }
 
   # Cache behavior for JS files
@@ -60,9 +57,6 @@ resource "aws_cloudfront_distribution" "website" {
     compress                 = true
     viewer_protocol_policy   = "redirect-to-https"
     cache_policy_id          = "2e54312d-136d-493c-8eb9-b001f22f67d2" # CachingOptimized
-    min_ttl                  = 31536000
-    default_ttl              = 31536000
-    max_ttl                  = 31536000
   }
 
   # Cache behavior for media files
@@ -74,9 +68,6 @@ resource "aws_cloudfront_distribution" "website" {
     compress                 = true
     viewer_protocol_policy   = "redirect-to-https"
     cache_policy_id          = "2e54312d-136d-493c-8eb9-b001f22f67d2" # CachingOptimized
-    min_ttl                  = 31536000
-    default_ttl              = 31536000
-    max_ttl                  = 31536000
   }
 
   # Custom error responses for SPA
