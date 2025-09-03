@@ -19,5 +19,5 @@ variable "hosted_zone_id" {
 variable "s3_bucket_name" {
   description = "S3 bucket name for website content"
   type        = string
-  default     = "marascofsc.com"
+  default     = "marascofsc-website-2025"
 }
